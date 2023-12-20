@@ -29,8 +29,7 @@ public class PriceControllerTest {
         String format = "yyyy-MM-dd-HH.mm.ss";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
 
-        return client.get().uri(
-                        String.format("/api/v1/price/?brandID=%s&productID=%s&purchaseDay=%s", brandId, productId, purchaseDay.format(formatter)))
+        return client.get().uri(String.format("/api/v1/price?brandID=%s&productID=%s&purchaseDay=%s", brandId, productId, purchaseDay.format(formatter)))
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange();
     }
