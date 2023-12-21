@@ -30,6 +30,15 @@ public class PriceControllerTest {
                 //assert
                 .expectStatus().isOk();
     }
+ @Test
+    void getApiNotFound() {
+        Integer brandId = 1;
+        Integer productId = 35455;
+     LocalDateTime purchaseDay = LocalDateTime.now();
+        makeGetRequest(brandId, productId, purchaseDay)
+                //assert
+                .expectStatus().isNotFound();
+    }
 
     private WebTestClient.ResponseSpec makeGetRequest(Integer brandId, Integer productId, LocalDateTime purchaseDay) {
 
