@@ -21,5 +21,10 @@ public class PriceMocks {
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
+    public static PriceDto priceExpectedTest3() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest3.json");
+
+        return mapper.readValue(inputStream, PriceDto.class);
+    }
 
 }

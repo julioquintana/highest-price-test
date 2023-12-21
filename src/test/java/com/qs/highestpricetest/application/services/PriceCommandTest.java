@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 
 import static com.qs.highestpricetest.util.Commons.formatter;
 import static com.qs.highestpricetest.util.PriceMocks.priceExpectedTest1;
+import static com.qs.highestpricetest.util.PriceMocks.priceExpectedTest3;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,7 +30,7 @@ class PriceCommandTest {
     private final Integer brandId = 1;
 
     @Test
-    public void validateRequestAt10AMOn14thForProduct35455Brand1() throws IOException {
+    public void validateRequestAt10On14thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-10.00.00",formatter);
         PriceDto expectedResult = priceExpectedTest1();
@@ -37,13 +38,13 @@ class PriceCommandTest {
         StepVerifier
                 .create(priceCommand.find(brandId, productId, purchaseDay))
                 .consumeNextWith(searchPriceDTO -> {
-                    assertThat(searchPriceDTO.equals(expectedResult));
+                    assertThat(searchPriceDTO).isEqualTo(expectedResult);
                 })
                 .verifyComplete();
     }
 
     @Test
-    public void validateRequestAt16AMOn14thForProduct35455Brand1() throws IOException {
+    public void validateRequestAt16On14thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-16.00.00",formatter);
         PriceDto expectedResult = priceExpectedTest1();
@@ -51,7 +52,21 @@ class PriceCommandTest {
         StepVerifier
                 .create(priceCommand.find(brandId, productId, purchaseDay))
                 .consumeNextWith(searchPriceDTO -> {
-                    assertThat(searchPriceDTO.equals(expectedResult));
+                    assertThat(searchPriceDTO).isEqualTo(expectedResult);
+                })
+                .verifyComplete();
+    }
+
+  @Test
+    public void validateRequestAt21On14thForProduct35455Brand1() throws IOException {
+
+        LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-21.00.00",formatter);
+        PriceDto expectedResult = priceExpectedTest1();
+
+        StepVerifier
+                .create(priceCommand.find(brandId, productId, purchaseDay))
+                .consumeNextWith(searchPriceDTO -> {
+                    assertThat(searchPriceDTO).isEqualTo(expectedResult);
                 })
                 .verifyComplete();
     }
