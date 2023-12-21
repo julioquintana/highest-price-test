@@ -2,6 +2,7 @@ package com.qs.highestpricetest.infrastructure.repositories;
 
 import com.qs.highestpricetest.domain.model.PriceDto;
 import com.qs.highestpricetest.domain.port.out.PriceRepositoryPort;
+import com.qs.highestpricetest.infrastructure.entities.PriceEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -12,9 +13,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ReactivePriceAdapter implements PriceRepositoryPort {
 
+    private final ReactivePriceRepository reactivePriceRepository;
 
     @Override
     public Mono<PriceDto> findHighestPrice(Integer brandID, Integer productID, LocalDateTime purchaseDay) {
-        return Mono.empty();
+        return reactivePriceRepository.findHighestPriceByBrandAndProductAndDate(brandID, productID, purchaseDay)
+                .map(PriceEntity::toDomainModel);
     }
 }
