@@ -41,4 +41,19 @@ class PriceCommandTest {
                 })
                 .verifyComplete();
     }
+
+    @Test
+    public void validateRequestAt16AMOn14thForProduct35455Brand1() throws IOException {
+
+        LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-16.00.00",formatter);
+        PriceDto expectedResult = priceExpectedTest1();
+
+        StepVerifier
+                .create(priceCommand.find(brandId, productId, purchaseDay))
+                .consumeNextWith(searchPriceDTO -> {
+                    assertThat(searchPriceDTO.equals(expectedResult));
+                })
+                .verifyComplete();
+    }
+
 }
