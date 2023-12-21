@@ -7,7 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import static com.qs.highestpricetest.util.Commons.formatter;
 
 @WebFluxTest
 public class PriceControllerTest {
@@ -26,8 +27,6 @@ public class PriceControllerTest {
     }
 
     private WebTestClient.ResponseSpec makeGetRequest(Integer brandId, Integer productId, LocalDateTime purchaseDay) {
-        String format = "yyyy-MM-dd-HH.mm.ss";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
 
         return client.get().uri(String.format("/api/v1/price?brandID=%s&productID=%s&purchaseDay=%s", brandId, productId, purchaseDay.format(formatter)))
                 .accept(MediaType.APPLICATION_JSON)
