@@ -1,0 +1,11 @@
+{
+  "id": 2,
+  "brandID": 1,
+  "startDate": "2020-06-14-15.00.00",
+  "endDate": "2020-06-14-18.30.00",
+  "priceList": 2,
+  "productID": 35455,
+  "priority": 1,
+  "price": 25.45,
+  "curr": "EUR"
+}

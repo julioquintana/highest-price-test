@@ -21,8 +21,23 @@ public class PriceMocks {
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
+    public static PriceDto priceExpectedTest2() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest2.json");
+
+        return mapper.readValue(inputStream, PriceDto.class);
+    }
     public static PriceDto priceExpectedTest3() throws IOException {
             InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest3.json");
+
+        return mapper.readValue(inputStream, PriceDto.class);
+    }
+    public static PriceDto priceExpectedTest4() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest4.json");
+
+        return mapper.readValue(inputStream, PriceDto.class);
+    }
+    public static PriceDto priceExpectedTest5() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest5.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
