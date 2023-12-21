@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class PriceController {
 
     private final PriceCommand priceCommand;
+
     @GetMapping(path = "/api/v1/price")
     public Mono<PriceDto> findPrice(
             @RequestParam(name = "brandID") Integer brandID,

@@ -19,11 +19,11 @@ public class PriceEntity {
 
     // Price identifier.
     @Id
-    @Column( "ID")
+    @Column("ID")
     private Integer id;
 
     // Brand identifier.
-    @Column( "BRAND_ID")
+    @Column("BRAND_ID")
     private Long brandID;
 
     // init Range of dates for which the indicated tariff price applies.
