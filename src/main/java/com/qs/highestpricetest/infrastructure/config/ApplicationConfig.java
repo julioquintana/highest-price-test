@@ -20,7 +20,7 @@ public class ApplicationConfig {
 
     @Bean
     public PriceCommand priceCommand(FindPriceUseCase findPriceUseCase) {
-        return new PriceCommand();
+        return new PriceCommand(findPriceUseCase);
     }
 
     @Bean
