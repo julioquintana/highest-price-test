@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.qs.highestpricetest.infrastructure.repositories")
+@ComponentScan(basePackages = "com.qs.highestpricetest")
 public class ApplicationConfig {
     @Bean
     public FindPriceUseCase findPriceUseCase(PriceRepositoryPort priceRepositoryPort) {
@@ -24,9 +24,8 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public ReactivePriceAdapter priceRepositoryPort(ReactivePriceRepository reactivePriceRepository) {
+    public ReactivePriceAdapter reactivePriceAdapter(ReactivePriceRepository reactivePriceRepository) {
         return new ReactivePriceAdapter(reactivePriceRepository);
     }
-
 
 }
