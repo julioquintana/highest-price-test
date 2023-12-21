@@ -1,13 +1,24 @@
 server:
   port: 8080
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG
 spring:
-  h2:
-    console:
-      enabled: true
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  datasource:
-    url: jdbc:h2:mem:testdb
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+  r2dbc:
+    url: r2dbc:h2:mem:///testDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    name: testDb
     username: sa
-    password: password
-    driver-class-name: org.h2.Driver
+    password:
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    url: jdbc:h2:mem:testDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    user: sa
+    password:
+    drop-first: true
+  h2:
+    console.enabled: true

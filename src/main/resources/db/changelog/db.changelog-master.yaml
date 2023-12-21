@@ -1,0 +1,170 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-price-table
+      author: JulioQuintana
+      changes:
+        - createTable:
+            tableName: PRICES
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: BRAND_ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: START_DATE
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: END_DATE
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRICE_LIST
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRODUCT_ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRIORITY
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRICE
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CURR
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: insert-prices-data
+      author: JulioQuintana
+      comment: "FILL TABLE"
+      changes:
+        - insert:
+            tableName: PRICES
+            columns:
+              - column:
+                  name: BRAND_ID
+                  value: 1
+              - column:
+                  name: START_DATE
+                  value: '2020-06-14 00:00:00'
+              - column:
+                  name: END_DATE
+                  value: '2020-12-31 23:59:59'
+              - column:
+                  name: PRICE_LIST
+                  value: 1
+              - column:
+                  name: PRODUCT_ID
+                  value: 35455
+              - column:
+                  name: PRIORITY
+                  value: 0
+              - column:
+                  name: PRICE
+                  value: 35.50
+              - column:
+                  name: CURR
+                  value: "EUR"
+        - insert:
+            tableName: PRICES
+            columns:
+              - column:
+                  name: BRAND_ID
+                  value: 1
+              - column:
+                  name: START_DATE
+                  value: '2020-06-14 15:00:00'
+              - column:
+                  name: END_DATE
+                  value: '2020-06-14 18:30:00'
+              - column:
+                  name: PRICE_LIST
+                  value: 2
+              - column:
+                  name: PRODUCT_ID
+                  value: 35455
+              - column:
+                  name: PRIORITY
+                  value: 1
+              - column:
+                  name: PRICE
+                  value: 25.45
+              - column:
+                  name: CURR
+                  value: "EUR"
+        - insert:
+            tableName: PRICES
+            columns:
+              - column:
+                  name: BRAND_ID
+                  value: 1
+              - column:
+                  name: START_DATE
+                  value: '2020-06-15 00:00:00'
+              - column:
+                  name: END_DATE
+                  value: '2020-06-15 11:00:00'
+              - column:
+                  name: PRICE_LIST
+                  value: 3
+              - column:
+                  name: PRODUCT_ID
+                  value: 35455
+              - column:
+                  name: PRIORITY
+                  value: 1
+              - column:
+                  name: PRICE
+                  value: 30.50
+              - column:
+                  name: CURR
+                  value: "EUR"
+        - insert:
+            tableName: PRICES
+            columns:
+              - column:
+                  name: BRAND_ID
+                  value: 1
+              - column:
+                  name: START_DATE
+                  value: '2020-06-15 16:00:00'
+              - column:
+                  name: END_DATE
+                  value: '2020-12-31 23:59:59'
+              - column:
+                  name: PRICE_LIST
+                  value: 4
+              - column:
+                  name: PRODUCT_ID
+                  value: 35455
+              - column:
+                  name: PRIORITY
+                  value: 1
+              - column:
+                  name: PRICE
+                  value: 38.95
+              - column:
+                  name: CURR
+                  value: "EUR"
