@@ -1,16 +1,21 @@
 package com.qs.highestpricetest.infrastructure.adapter.in;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.time.LocalDateTime;
 
 import static com.qs.highestpricetest.util.Commons.formatter;
 
-@WebFluxTest
+@SpringBootTest
+@AutoConfigureWebTestClient
 public class PriceControllerTest {
 
     @Autowired
@@ -20,7 +25,7 @@ public class PriceControllerTest {
     void getApi() {
         Integer brandId = 1;
         Integer productId = 35455;
-        LocalDateTime purchaseDay = LocalDateTime.now();
+        LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-10.00.00",formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
                 .expectStatus().isOk();
