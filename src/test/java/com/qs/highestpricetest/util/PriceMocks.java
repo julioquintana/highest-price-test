@@ -3,6 +3,7 @@ package com.qs.highestpricetest.util;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.qs.highestpricetest.application.exception.ErrorResponse;
 import com.qs.highestpricetest.domain.model.PriceDto;
 
 import java.io.IOException;
@@ -16,30 +17,30 @@ public class PriceMocks {
             .registerModule(new JavaTimeModule());
 
 
-    public static PriceDto priceExpectedTest1() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest1.json");
+    public static PriceDto price1Expected() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList1.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
-    public static PriceDto priceExpectedTest2() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest2.json");
+    public static PriceDto price2Expected() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList2.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
-    public static PriceDto priceExpectedTest3() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest3.json");
+    public static PriceDto price3Expected() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList3.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
-    public static PriceDto priceExpectedTest4() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest4.json");
+    public static PriceDto price4Expected() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList4.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
-    public static PriceDto priceExpectedTest5() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceExpectedTest5.json");
+    public static ErrorResponse notFound() throws IOException {
+            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList4.json");
 
-        return mapper.readValue(inputStream, PriceDto.class);
+        return mapper.readValue(inputStream, ErrorResponse.class);
     }
 
 }
