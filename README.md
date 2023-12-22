@@ -42,9 +42,20 @@ Desarrollar unos test al endpoint rest que  validen las siguientes peticiones al
 4. [x] Test 4: petición a las 10:00 del día 15 del producto 35455 para la brand 1 (ZARA)
 5. [x] Test 5: petición a las 21:00 del día 16 del producto 35455 para la brand 1 (ZARA)
 
-
-
 Se valorará:
 * Diseño y construcción del servicio.
 * Calidad de Código.
 * Resultados correctos en los test.
+
+
+**Coverage 85%**
+
+First Execute this commands
+
+1. `./gradlew test`
+2. `./gradlew jacocoTestReport`
+
+After click in this link
+[Report](build%2Freports%2Fjacoco%2Ftest%2Fhtml%2Findex.html)
+
+![img.png](img.png)

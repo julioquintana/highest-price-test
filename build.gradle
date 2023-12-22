@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'jacoco'
+
 }
 
 group = 'com.qs'
@@ -38,4 +40,7 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+jacoco {
+	toolVersion = "0.8.7"
 }

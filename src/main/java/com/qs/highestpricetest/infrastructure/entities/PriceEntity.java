@@ -10,8 +10,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@ToString
 @Builder
+@ToString
+@Generated
 @NoArgsConstructor
 @AllArgsConstructor
 @Table("PRICES")
