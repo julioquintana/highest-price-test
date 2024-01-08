@@ -2,7 +2,7 @@ server:
   port: 8080
 logging:
   level:
-    org.springframework.data.r2dbc: DEBUG
+    org.springframework.data.r2dbc: INFO
 spring:
   data:
     r2dbc:
