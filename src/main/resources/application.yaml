@@ -1,8 +1,16 @@
 server:
   port: 8080
 logging:
+  pattern:
+    console: |
+      {"timestamp": "%d{yyyy-MM-dd HH:mm:ss.SSS}","level": "%p","thread": "%t","clazz": "%logger{36}","transactionId": "%X{X-Trace-Id}","payload": %msg}
+    file: |
+      {"timestamp": "%d{yyyy-MM-dd HH:mm:ss.SSS}","level": "%p","thread": "%t","clazz": "%logger{36}","transactionId": "%X{X-Trace-Id}","payload": %msg}
   level:
+    root: INFO
     org.springframework.data.r2dbc: INFO
+  file:
+    name: log.log
 spring:
   data:
     r2dbc:
