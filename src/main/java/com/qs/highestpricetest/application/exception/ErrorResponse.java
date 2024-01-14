@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class ErrorResponse  extends Mapper {
+public class ErrorResponse extends Mapper {
     private int status;
     private List<String> errors;
 
