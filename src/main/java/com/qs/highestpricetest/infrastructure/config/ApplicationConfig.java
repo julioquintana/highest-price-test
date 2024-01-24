@@ -1,7 +1,9 @@
 package com.qs.highestpricetest.infrastructure.config;
 
 import com.qs.highestpricetest.application.services.PriceCommand;
+import com.qs.highestpricetest.application.usescases.FindAllPriceUseCaseImpl;
 import com.qs.highestpricetest.application.usescases.FindPriceUseCaseImpl;
+import com.qs.highestpricetest.domain.port.in.FindAllPriceUseCase;
 import com.qs.highestpricetest.domain.port.in.FindPriceUseCase;
 import com.qs.highestpricetest.domain.port.out.PriceRepositoryPort;
 import com.qs.highestpricetest.infrastructure.repositories.ReactivePriceAdapter;
@@ -19,8 +21,13 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public PriceCommand priceCommand(FindPriceUseCase findPriceUseCase) {
-        return new PriceCommand(findPriceUseCase);
+    public FindAllPriceUseCase findAllPriceUseCase(PriceRepositoryPort priceRepositoryPort) {
+        return new FindAllPriceUseCaseImpl(priceRepositoryPort);
+    }
+
+    @Bean
+    public PriceCommand priceCommand(FindPriceUseCase findPriceUseCase, FindAllPriceUseCase findAllPriceUseCase) {
+        return new PriceCommand(findPriceUseCase, findAllPriceUseCase);
     }
 
     @Bean

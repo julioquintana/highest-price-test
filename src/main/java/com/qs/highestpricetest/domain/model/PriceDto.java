@@ -3,16 +3,13 @@ package com.qs.highestpricetest.domain.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.qs.highestpricetest.infrastructure.util.Mapper;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
-@Generated
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceDto extends Mapper {

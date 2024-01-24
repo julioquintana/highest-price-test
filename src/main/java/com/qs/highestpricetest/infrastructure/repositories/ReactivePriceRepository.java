@@ -5,6 +5,7 @@ import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -21,5 +22,7 @@ public interface ReactivePriceRepository extends ReactiveCrudRepository<PriceEnt
     Mono<PriceEntity> findHighestPriceByBrandAndProductAndDate(@Param("brandID") Integer brandID,
                                                                @Param("productID") Integer productID,
                                                                @Param("purchaseDay") LocalDateTime purchaseDay);
+    @Query("SELECT * FROM PRICES p WHERE p.PRODUCT_ID = :productID ORDER BY p.PRIORITY DESC")
+    Flux<PriceEntity> findAllById(@Param("productID") Integer productID);
 
 }

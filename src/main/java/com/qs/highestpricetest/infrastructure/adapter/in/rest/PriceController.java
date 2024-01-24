@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -31,6 +32,18 @@ public class PriceController {
         log.info(Map.of("brandID", brandID, "productID", productID, "purchaseDay", purchaseDay));
 
         var response = priceCommand.find(brandID, productID, purchaseDay);
+
+        return response
+                .doOnNext(log::info)
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el recurso")));
+    }
+
+    @GetMapping(path = "/api/v1/price/product")
+    public Flux<PriceDto> findAllPrice(
+            @RequestParam(name = "productID") @NotNull Integer productID) {
+        log.info(Map.of("productID", productID));
+
+        var response = priceCommand.findAllById(productID);
 
         return response
                 .doOnNext(log::info)
