@@ -13,6 +13,6 @@ public class PublisherMessageAdapter implements PublishPricePort {
 
     @Override
     public Mono<PriceDto> publish(PriceDto priceDto) {
-       return publisherKafka.sendMessage(priceDto);
+        return publisherKafka.sendMessage(priceDto);
     }
 }

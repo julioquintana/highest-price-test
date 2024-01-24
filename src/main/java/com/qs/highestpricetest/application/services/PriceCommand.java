@@ -20,12 +20,15 @@ public class PriceCommand {
     public Mono<PriceDto> find(Integer brandID, Integer productID, LocalDateTime purchaseDay) {
         return findPriceUseCase.find(brandID, productID, purchaseDay);
     }
+
     public Flux<PriceDto> findAllById(Integer productID) {
         return findAllPriceUseCase.findAllById(productID);
     }
+
     public Mono<PriceDto> update(Integer id, UpdatePriceDto updatePriceDto) {
         return updatePriceUseCase.update(id, updatePriceDto);
     }
+
     public Flux<PriceDto> findAll(Integer productID) {
         return findAllPriceUseCase.findAllById(productID);
     }

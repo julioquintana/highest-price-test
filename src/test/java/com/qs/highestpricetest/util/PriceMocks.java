@@ -18,27 +18,31 @@ public class PriceMocks {
 
 
     public static PriceDto price1Expected() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList1.json");
+        InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList1.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
+
     public static PriceDto price2Expected() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList2.json");
+        InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList2.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
+
     public static PriceDto price3Expected() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList3.json");
+        InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList3.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
+
     public static PriceDto price4Expected() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList4.json");
+        InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList4.json");
 
         return mapper.readValue(inputStream, PriceDto.class);
     }
+
     public static ErrorResponse notFound() throws IOException {
-            InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList4.json");
+        InputStream inputStream = PriceMocks.class.getClassLoader().getResourceAsStream("json/priceList4.json");
 
         return mapper.readValue(inputStream, ErrorResponse.class);
     }
