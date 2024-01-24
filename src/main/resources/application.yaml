@@ -16,6 +16,11 @@ spring:
     r2dbc:
       repositories:
         enabled: true
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   r2dbc:
     url: r2dbc:h2:mem:///testDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name: testDb
@@ -30,3 +35,6 @@ spring:
     drop-first: true
   h2:
     console.enabled: true
+properties:
+  kafka:
+    topic: topic_test

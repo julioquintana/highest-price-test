@@ -10,6 +10,9 @@ import com.qs.highestpricetest.domain.port.in.FindPriceByIdUseCase;
 import com.qs.highestpricetest.domain.port.in.FindPriceUseCase;
 import com.qs.highestpricetest.domain.port.in.UpdatePriceUseCase;
 import com.qs.highestpricetest.domain.port.out.PriceRepositoryPort;
+import com.qs.highestpricetest.domain.port.out.PublishPricePort;
+import com.qs.highestpricetest.infrastructure.adapter.out.PublisherMessageAdapter;
+import com.qs.highestpricetest.infrastructure.publisher.PublisherKafka;
 import com.qs.highestpricetest.infrastructure.repositories.ReactivePriceAdapter;
 import com.qs.highestpricetest.infrastructure.repositories.ReactivePriceRepository;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +38,13 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public UpdatePriceUseCaseImpl updatePriceUseCase(PriceRepositoryPort priceRepositoryPort, FindPriceByIdUseCase findPriceByIdUseCase) {
-        return new UpdatePriceUseCaseImpl(priceRepositoryPort, findPriceByIdUseCase);
+    public PublishPricePort publishPricePort(PublisherKafka publisherKafka) {
+        return new PublisherMessageAdapter(publisherKafka);
+    }
+
+    @Bean
+    public UpdatePriceUseCaseImpl updatePriceUseCase(PriceRepositoryPort priceRepositoryPort, FindPriceByIdUseCase findPriceByIdUseCase, PublishPricePort publishPricePort) {
+        return new UpdatePriceUseCaseImpl(priceRepositoryPort, findPriceByIdUseCase, publishPricePort);
     }
 
     @Bean
