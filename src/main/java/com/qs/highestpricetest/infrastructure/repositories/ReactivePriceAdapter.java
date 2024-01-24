@@ -1,7 +1,6 @@
 package com.qs.highestpricetest.infrastructure.repositories;
 
 import com.qs.highestpricetest.domain.model.PriceDto;
-import com.qs.highestpricetest.domain.model.UpdatePriceDto;
 import com.qs.highestpricetest.domain.port.out.PriceRepositoryPort;
 import com.qs.highestpricetest.infrastructure.entities.PriceEntity;
 import lombok.AllArgsConstructor;
@@ -35,6 +34,7 @@ public class ReactivePriceAdapter implements PriceRepositoryPort {
                 .map(PriceEntity::toDomainModel);
 
     }
+
     @Override
     public Mono<PriceDto> update(PriceDto priceDto) {
         return reactivePriceRepository.save(priceDto.toEntity())

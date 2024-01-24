@@ -25,6 +25,6 @@ public class UpdatePriceUseCaseImpl implements UpdatePriceUseCase {
             return priceRepositoryPort.update(priceDto);
         }).flatMap(updatePriceDtoResponse ->
                 Mono.zip(Mono.just(updatePriceDtoResponse), publishPricePort.publish(updatePriceDtoResponse))
-                .flatMap(tuple -> Mono.just(tuple.getT1())));
+                        .flatMap(tuple -> Mono.just(tuple.getT1())));
     }
 }
