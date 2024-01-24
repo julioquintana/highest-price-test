@@ -2,8 +2,10 @@ package com.qs.highestpricetest.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.qs.highestpricetest.infrastructure.entities.PriceEntity;
 import com.qs.highestpricetest.infrastructure.util.Mapper;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,19 +18,17 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PriceDto extends Mapper {
-    private Integer id;
-    private Long brandID;
+public class UpdatePriceDto extends Mapper {
+    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
     private LocalDateTime startDate;
+    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
     private LocalDateTime endDate;
-    private Long priceList;
-    private Long productID;
-    private Long priority;
+    @NotNull
+    @Positive
     @JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT, pattern = "#,##0.00")
     private BigDecimal price;
-    private String curr;
 
     @Override
     public String toString() {
@@ -37,19 +37,5 @@ public class PriceDto extends Mapper {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public PriceEntity toEntity() {
-        return PriceEntity.builder()
-                .id(id)
-                .brandID(brandID)
-                .startDate(startDate)
-                .endDate(endDate)
-                .priceList(priceList)
-                .productID(productID)
-                .priority(priority)
-                .price(price)
-                .curr(curr)
-                .build();
     }
 }

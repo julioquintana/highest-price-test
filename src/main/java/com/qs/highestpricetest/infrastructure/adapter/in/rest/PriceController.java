@@ -2,14 +2,14 @@ package com.qs.highestpricetest.infrastructure.adapter.in.rest;
 
 import com.qs.highestpricetest.application.services.PriceCommand;
 import com.qs.highestpricetest.domain.model.PriceDto;
+import com.qs.highestpricetest.domain.model.UpdatePriceDto;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -44,6 +44,20 @@ public class PriceController {
         log.info(Map.of("productID", productID));
 
         var response = priceCommand.findAllById(productID);
+
+        return response
+                .doOnNext(log::info)
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el recurso")));
+    }
+
+    @PutMapping(path = "/api/v1/price/{id}")
+    public Mono<PriceDto> udpate(
+            @PathVariable(name = "id") @NotNull Integer id,
+            @RequestBody @Valid UpdatePriceDto updatePriceDto
+    ) {
+        log.info(Map.of("id", id, "payload", updatePriceDto));
+
+        var response = priceCommand.update(id, updatePriceDto);
 
         return response
                 .doOnNext(log::info)
