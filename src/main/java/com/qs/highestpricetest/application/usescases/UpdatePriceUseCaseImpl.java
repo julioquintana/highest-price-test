@@ -23,8 +23,6 @@ public class UpdatePriceUseCaseImpl implements UpdatePriceUseCase {
             priceDto.setEndDate(updatePriceDto.getEndDate());
             priceDto.setPrice(updatePriceDto.getPrice());
             return priceRepositoryPort.update(priceDto);
-        }).flatMap(updatePriceDtoResponse ->
-                Mono.zip(Mono.just(updatePriceDtoResponse), publishPricePort.publish(updatePriceDtoResponse))
-                        .flatMap(tuple -> Mono.just(tuple.getT1())));
+        }).flatMap(publishPricePort::publish);
     }
 }

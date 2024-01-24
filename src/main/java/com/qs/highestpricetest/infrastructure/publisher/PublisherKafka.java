@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono;
 @Service
 @AllArgsConstructor
 public class PublisherKafka {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
     private final PropertyValues propertyValues;
 
 
-    public Mono<Void> sendMessage(PriceDto message) {
-        return Mono.fromRunnable(() -> kafkaTemplate.send(propertyValues.getTopic(), message.toString()).toCompletableFuture())
-                .then();
+    public Mono<PriceDto> sendMessage(PriceDto message) {
+        return Mono.fromRunnable(() -> kafkaTemplate.send(propertyValues.getTopic(), message))
+                .thenReturn(message);
     }
 }

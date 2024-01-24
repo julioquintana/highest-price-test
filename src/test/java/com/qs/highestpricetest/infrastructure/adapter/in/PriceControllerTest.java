@@ -32,7 +32,6 @@ public class PriceControllerTest {
                 //assert
                 .expectStatus().isOk();
     }
-
     @Test
     @DisplayName("end-to-end Test 1: petición a las 10:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour10Day14Product35455ZaraBrandExpectedPriceList1() throws IOException {
@@ -45,7 +44,6 @@ public class PriceControllerTest {
                 .expectBody(PriceDto.class)
                 .isEqualTo(price1Expected());
     }
-
     @Test
     @DisplayName("end-to-end Test 2: petición a las 16:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour16Day14Product35455ZaraBrandExpectedPriceList2() throws IOException {
@@ -58,7 +56,6 @@ public class PriceControllerTest {
                 .expectBody(PriceDto.class)
                 .isEqualTo(price2Expected());
     }
-
     @Test
     @DisplayName("end-to-end Test 3: petición a las 21:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour21Day14Product35455ZaraBrandExpectedPriceList1() throws IOException {
@@ -71,7 +68,6 @@ public class PriceControllerTest {
                 .expectBody(PriceDto.class)
                 .isEqualTo(price1Expected());
     }
-
     @Test
     @DisplayName("end-to-end Test 4: petición a las 10:00 del día 15 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour10Day15Product35455ZaraBrandExpectedPriceList3() throws IOException {
@@ -84,7 +80,6 @@ public class PriceControllerTest {
                 .expectBody(PriceDto.class)
                 .isEqualTo(price3Expected());
     }
-
     @Test
     @DisplayName("end-to-end Test 5: petición a las 21:00 del día 16 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour21Day16Product35455ZaraBrandExpectedPriceList4() throws IOException {
@@ -117,7 +112,6 @@ public class PriceControllerTest {
                 //assert
                 .expectStatus().isBadRequest();
     }
-
     @Test
     void getApiBadRequestWithMethodArgumentNotValidException() {
         Integer brandId = 1;
@@ -128,13 +122,13 @@ public class PriceControllerTest {
     }
 
 
+
     private WebTestClient.ResponseSpec makeGetRequestWithMethodArgumentNotValidException(Integer brandId, Integer productId) {
         return client.get().uri(String.format("/api/v1/price?brandID=%s&productID=%s", brandId, productId))
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange();
     }
-
-    private WebTestClient.ResponseSpec makeGetRequestWithBadRequest(Integer brandId, Integer productId, LocalDateTime purchaseDay) {
+private WebTestClient.ResponseSpec makeGetRequestWithBadRequest(Integer brandId, Integer productId, LocalDateTime purchaseDay) {
         final String format = "yyyy-MM-dd-HH.mm-ss";
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         return client.get().uri(String.format("/api/v1/price?brandID=%s&productID=%s&purchaseDay=%s", brandId, productId, purchaseDay.format(formatter)))

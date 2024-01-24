@@ -22,7 +22,6 @@ public interface ReactivePriceRepository extends ReactiveCrudRepository<PriceEnt
     Mono<PriceEntity> findHighestPriceByBrandAndProductAndDate(@Param("brandID") Integer brandID,
                                                                @Param("productID") Integer productID,
                                                                @Param("purchaseDay") LocalDateTime purchaseDay);
-
     @Query("SELECT * FROM PRICES p WHERE p.PRODUCT_ID = :productID ORDER BY p.PRIORITY DESC")
     Flux<PriceEntity> findAllById(@Param("productID") Integer productID);
 

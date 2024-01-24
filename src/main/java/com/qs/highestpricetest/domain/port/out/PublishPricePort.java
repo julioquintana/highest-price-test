@@ -5,5 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface PublishPricePort {
 
-    Mono<Void> publish(PriceDto priceDto);
+    Mono<PriceDto> publish(PriceDto priceDto);
 }

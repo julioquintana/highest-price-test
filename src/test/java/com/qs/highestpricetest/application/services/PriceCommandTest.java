@@ -95,7 +95,6 @@ class PriceCommandTest {
 
         validate(purchaseDay, expectedResult);
     }
-
     @Test
     public void validateRequestAt183001n14thForProduct35455Brand1() throws IOException {
 

@@ -1,6 +1,7 @@
 package com.qs.highestpricetest.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.qs.highestpricetest.infrastructure.entities.PriceEntity;
 import com.qs.highestpricetest.infrastructure.util.Mapper;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PriceDto extends Mapper {
     private Integer id;
     private Long brandID;
