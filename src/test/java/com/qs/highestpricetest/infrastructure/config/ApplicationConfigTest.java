@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @ContextConfiguration(classes = ApplicationConfig.class)
-public class ApplicationConfigTest {
+class ApplicationConfigTest {
 
     @Autowired
     private FindPriceUseCase findPriceUseCase;
@@ -24,17 +24,17 @@ public class ApplicationConfigTest {
     private ReactivePriceAdapter reactivePriceAdapter;
 
     @Test
-    public void testFindPriceUseCase() {
+    void testFindPriceUseCase() {
         assertNotNull(findPriceUseCase);
     }
 
     @Test
-    public void testPriceCommand() {
+    void testPriceCommand() {
         assertNotNull(priceCommand);
     }
 
     @Test
-    public void testReactivePriceAdapter() {
+    void testReactivePriceAdapter() {
         assertNotNull(reactivePriceAdapter);
     }
 }

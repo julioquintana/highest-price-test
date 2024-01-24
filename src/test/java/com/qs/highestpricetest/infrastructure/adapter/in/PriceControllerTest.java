@@ -26,7 +26,7 @@ public class PriceControllerTest {
     @Test
     void getApi() {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-10.00.00", formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -37,7 +37,7 @@ public class PriceControllerTest {
     @DisplayName("end-to-end Test 1: petición a las 10:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour10Day14Product35455ZaraBrandExpectedPriceList1() throws IOException {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-10.00.00", formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -50,7 +50,7 @@ public class PriceControllerTest {
     @DisplayName("end-to-end Test 2: petición a las 16:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour16Day14Product35455ZaraBrandExpectedPriceList2() throws IOException {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-16.00.00", formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -63,7 +63,7 @@ public class PriceControllerTest {
     @DisplayName("end-to-end Test 3: petición a las 21:00 del día 14 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour21Day14Product35455ZaraBrandExpectedPriceList1() throws IOException {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-21.00.00", formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -76,7 +76,7 @@ public class PriceControllerTest {
     @DisplayName("end-to-end Test 4: petición a las 10:00 del día 15 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour10Day15Product35455ZaraBrandExpectedPriceList3() throws IOException {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-15-10.00.00", formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -89,7 +89,7 @@ public class PriceControllerTest {
     @DisplayName("end-to-end Test 5: petición a las 21:00 del día 16 del producto 35455 para la brand 1 (ZARA)")
     void endToEndTestRequestHour21Day16Product35455ZaraBrandExpectedPriceList4() throws IOException {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-16-21.00.00", formatter);
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -101,7 +101,7 @@ public class PriceControllerTest {
     @Test
     void getApiNotFound() {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.now();
         makeGetRequest(brandId, productId, purchaseDay)
                 //assert
@@ -111,7 +111,7 @@ public class PriceControllerTest {
     @Test
     void getApiBadRequest() {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         LocalDateTime purchaseDay = LocalDateTime.now();
         makeGetRequestWithBadRequest(brandId, productId, purchaseDay)
                 //assert
@@ -121,7 +121,7 @@ public class PriceControllerTest {
     @Test
     void getApiBadRequestWithMethodArgumentNotValidException() {
         Integer brandId = 1;
-        Integer productId = 35455;
+        Integer productId = 1;
         makeGetRequestWithMethodArgumentNotValidException(brandId, productId)
                 //assert
                 .expectStatus().isBadRequest();

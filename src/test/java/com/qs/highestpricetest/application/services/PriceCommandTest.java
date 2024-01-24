@@ -21,7 +21,7 @@ class PriceCommandTest {
 
     @Autowired
     private PriceCommand priceCommand;
-    private final Integer productId = 35455;
+    private final Integer productId = 1;
     private final Integer brandId = 1;
 
     @Test
@@ -43,7 +43,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt21On14thForProduct35455Brand1() throws IOException {
+    void validateRequestAt21On14thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-21.00.00", formatter);
         PriceDto expectedResult = price1Expected();
@@ -52,7 +52,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt10On15thForProduct35455Brand1() throws IOException {
+    void validateRequestAt10On15thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-15-10.00.00", formatter);
         PriceDto expectedResult = price3Expected();
@@ -61,7 +61,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt21On16thForProduct35455Brand1() throws IOException {
+    void validateRequestAt21On16thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-16-21.00.00", formatter);
         PriceDto expectedResult = price4Expected();
@@ -70,7 +70,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt23On16thForProduct35455Brand1() throws IOException {
+    void validateRequestAt23On16thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-16-23.00.00", formatter);
         PriceDto expectedResult = price4Expected();
@@ -79,7 +79,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt00On14thForProduct35455Brand1() throws IOException {
+    void validateRequestAt00On14thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-00.00.00", formatter);
         PriceDto expectedResult = price1Expected();
@@ -88,7 +88,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt1830n14thForProduct35455Brand1() throws IOException {
+    void validateRequestAt1830n14thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-18.30.00", formatter);
         PriceDto expectedResult = price2Expected();
@@ -97,7 +97,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt183001n14thForProduct35455Brand1() throws IOException {
+    void validateRequestAt183001n14thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-06-14-18.30.01", formatter);
         PriceDto expectedResult = price1Expected();
@@ -106,7 +106,7 @@ class PriceCommandTest {
     }
 
     @Test
-    public void validateRequestAt235959On31thForProduct35455Brand1() throws IOException {
+    void validateRequestAt235959On31thForProduct35455Brand1() throws IOException {
 
         LocalDateTime purchaseDay = LocalDateTime.parse("2020-12-31-23.59.59", formatter);
         PriceDto expectedResult = price4Expected();
